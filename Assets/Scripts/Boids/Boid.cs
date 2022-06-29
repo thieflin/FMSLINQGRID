@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class Boid : MonoBehaviour
 {
@@ -210,7 +211,9 @@ public class Boid : MonoBehaviour
         Vector3 desired = new Vector3();
         int nearbyBoids = 0;
 
-        foreach (var boid in BoidManager.instance.allBoids) //Reviso en cada elemento de la lista constituida por mis boids
+        var myCol = BoidManager.instance.allBoids.Select(x => x);
+
+        foreach (var boid in myCol /*BoidManager.instance.allBoids*/) //Reviso en cada elemento de la lista constituida por mis boids
         {
             Vector3 distance = boid.transform.position - transform.position;
 
