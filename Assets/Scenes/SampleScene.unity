@@ -1171,7 +1171,7 @@ MonoBehaviour:
   killBoidDistance: 0
   target: {fileID: 0}
   chaseDistance: 5
-  loseDistance: 10
+  loseDistance: 0
   _desiredVectors: []
   _magnitudes: []
   auxiliarList: []
@@ -1186,7 +1186,6 @@ MonoBehaviour:
   - {fileID: 1792234462}
   - {fileID: 37753612}
   - {fileID: 2125427957}
-  counter: 0
 --- !u!136 &648477711
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -2570,7 +2569,7 @@ PrefabInstance:
     - target: {fileID: 3769878350340226569, guid: 45c2ec69e7a51394da299b1488e5a7f0,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -6.91
+      value: -7.09
       objectReference: {fileID: 0}
     - target: {fileID: 3769878350340226569, guid: 45c2ec69e7a51394da299b1488e5a7f0,
         type: 3}
@@ -3410,7 +3409,7 @@ PrefabInstance:
     - target: {fileID: 3769878350340226569, guid: 45c2ec69e7a51394da299b1488e5a7f0,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.37
+      value: -0.33
       objectReference: {fileID: 0}
     - target: {fileID: 3769878350340226569, guid: 45c2ec69e7a51394da299b1488e5a7f0,
         type: 3}

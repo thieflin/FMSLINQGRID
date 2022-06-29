@@ -120,6 +120,7 @@ public class HunterEDFSM : MonoBehaviour
             if (staminaBar <= 0) //Si llega a 0 de stamina va a Idle y recarga
                 SendInputToFSM(PlayerInputs.IDLE);
 
+            //Busco de todos los boids el que me sirve
             boids = BoidSearcher(bm.allBoids).ToList();
 
             var closestBoid = boids.First(); //Elijo el boid que mas cerca mio esta
@@ -209,7 +210,7 @@ public class HunterEDFSM : MonoBehaviour
 
         chasing.OnExit += x =>
         {
-            
+            Debug.Log("sali de aki");
         };
 
 
@@ -271,6 +272,7 @@ public class HunterEDFSM : MonoBehaviour
     }
 
 
+    //Buscado de boid cercano
     IEnumerable<Tuple<Vector3, float, Boid>> BoidSearcher(List<Boid> allBoids)
     {
         var myCol = allBoids.Aggregate(new List<Tuple<Vector3, float, Boid>>(), (acum, current) =>
