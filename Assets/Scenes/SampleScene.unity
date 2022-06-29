@@ -1158,33 +1158,34 @@ MonoBehaviour:
   m_GameObject: {fileID: 648477709}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2c51259f182f8c441aa6c1aa4ecefe07, type: 3}
+  m_Script: {fileID: 11500000, guid: 39cd498fe0ef071458debc4846fd8d61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _myRen: {fileID: 0}
   _velocity: {x: 0, y: 0, z: 0}
-  waypointSpeed: 4
+  waypointSpeed: 0
   maxForce: 0
   rightWay: 0
   provisionaryWaypointTurnaround: 0
   _desired: {x: 0, y: 0, z: 0}
   killBoidDistance: 0
   target: {fileID: 0}
-  chaseDistance: 0
+  chaseDistance: 10
   _desiredVectors: []
   _magnitudes: []
   auxiliarList: []
   minValue: 0
   minValueIndex: 0
   futureTime: 0
-  futurePosObject: {fileID: 0}
-  staminaBar: 5
+  bm: {fileID: 1692783894}
+  staminaBar: 0
   isResting: 0
   allWaypoints:
   - {fileID: 153760409}
   - {fileID: 1792234462}
   - {fileID: 37753612}
   - {fileID: 2125427957}
+  counter: 0
 --- !u!136 &648477711
 CapsuleCollider:
   m_ObjectHideFlags: 0

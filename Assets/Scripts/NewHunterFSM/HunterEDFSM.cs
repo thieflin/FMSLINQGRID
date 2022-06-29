@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using IA2;
 using System.Linq;
+using System;
 
 public class HunterEDFSM : MonoBehaviour
 {
@@ -31,7 +32,10 @@ public class HunterEDFSM : MonoBehaviour
     public List<Boid> auxiliarList; //Lista auxiliar de boids
     public float minValue, minValueIndex; //Valor minimo de distancia para que focusee a ese, y el valor de su index en la lista
     public float futureTime;
-    public GameObject futurePosObject; //Objeto futuro
+    public BoidManager bm;
+
+    public List<Tuple<Vector3, float, Boid>> boids = new List<Tuple<Vector3, float, Boid>>();//Lista de tuplas para saber a que boid sigo
+
 
     [Header("Idle state")]
     public float staminaBar;
@@ -111,6 +115,17 @@ public class HunterEDFSM : MonoBehaviour
 
             if (staminaBar <= 0) //Si llega a 0 de stamina va a Idle y recarga
                 SendInputToFSM(PlayerInputs.IDLE);
+
+            boids = BoidSearcher(bm.allBoids).ToList();
+
+            var closestBoid = boids.First(); //Elijo el boid que mas cerca mio esta
+            //Debug.Log(closestBoid.Item2);
+            if (closestBoid.Item2 < chaseDistance) //Aca miro si estoy en chase distance, de estarlo, voy derecho a chase, y le ASIGNO un target a mi hunter, en este caso, el que mas cerca este
+            {
+                target = closestBoid.Item3; //Hago que el target sea el boid (current previo seleccionado que cumpla con la condicion)
+                SendInputToFSM(PlayerInputs.CHASE);
+
+            }
         };
 
 
@@ -159,6 +174,20 @@ public class HunterEDFSM : MonoBehaviour
         moving.OnExit += x =>
         {
             Debug.Log("sali");
+        };
+
+        chasing.OnEnter += x =>
+        {
+            Debug.Log("entre a chase");
+        };
+
+        chasing.OnUpdate += () =>
+        {
+            Debug.Log("tuki");
+            Vector3 dir = target.transform.position - transform.position;
+            transform.forward = dir;
+            transform.position += transform.forward * waypointSpeed * .5f * Time.deltaTime;
+
         };
 
 
@@ -218,4 +247,24 @@ public class HunterEDFSM : MonoBehaviour
     {
         //SendInputToFSM(PlayerInputs.IDLE);
     }
+    public int counter;
+    IEnumerable<Tuple<Vector3, float, Boid>> BoidSearcher(List<Boid> allBoids)
+    {
+        var myCol = allBoids.Aggregate(new List<Tuple<Vector3, float, Boid>>(), (acum, current) =>
+        {
+            var dir = current.transform.position - transform.position;
+            var tuple = Tuple.Create(dir, dir.magnitude, current);
+            acum.Add(tuple);
+
+
+            return acum;
+
+        }).OrderByDescending(x => x.Item2);
+
+        return myCol;
+
+    }
+    
+    
+
 }

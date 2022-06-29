@@ -92,7 +92,6 @@ public class WaypointState : MonoBehaviour, IState
         //Esto es el comportamiento para poder invocar a chase
         for (int i = 0; i < _hunter.auxiliarList.Count; i++) //Armo un vector desired entre mi hunter y todos los boids
         {
-
             _hunter._desiredVectors[i] = _hunter.auxiliarList[i].transform.position - _hunter.transform.position;
             _hunter._magnitudes[i] = _hunter._desiredVectors[i].magnitude; //Saco las magnitud del desired
         }
