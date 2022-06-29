@@ -1,10 +1,10 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using IA2;
-using System;
+using System.Linq;
 
-public class Personaje : MonoBehaviour
+public class HunterEDFSM : MonoBehaviour
 {
     public enum PlayerInputs { MOVE, IDLE, CHASE }
     private EventFSM<PlayerInputs> _myFsm;
@@ -80,7 +80,7 @@ public class Personaje : MonoBehaviour
 
         //Parecido a la FSM ANTERIOR, en lugar de hacer el update alla hago aca
         //IDLE
-        idle.OnUpdate += () => 
+        idle.OnUpdate += () =>
         {
             if (isResting && staminaBar <= 10) //una vez que me quedo sin stamina vengo aca, si se hizo true resting en el start
             {
@@ -105,7 +105,7 @@ public class Personaje : MonoBehaviour
         };
 
         //En el update manejo lo que seria la stamina para ver cuanto se puede mover
-        moving.OnUpdate += () => 
+        moving.OnUpdate += () =>
         {
             staminaBar -= Time.deltaTime * 0.5f; //Cuando patruya pierde stamina
 
@@ -114,7 +114,7 @@ public class Personaje : MonoBehaviour
         };
 
 
-        moving.OnFixedUpdate += () => 
+        moving.OnFixedUpdate += () =>
         {
             //Esto es el comportamiento de waypoints
             Vector3 dir = allWaypoints[_currentWaypoint].transform.position - transform.position;
@@ -136,7 +136,7 @@ public class Personaje : MonoBehaviour
                 }
                 else //Le quito el sentido correcto, como cambia al 0 le armor un bool y le digo
                 {
-                    if (_currentWaypoint == 0 &&provisionaryWaypointTurnaround) //Si sos 0 y acabas de cambiar
+                    if (_currentWaypoint == 0 && provisionaryWaypointTurnaround) //Si sos 0 y acabas de cambiar
                     {
                         _currentWaypoint = 4; //Tu proximo waypoint es el count total +1, cosa que vaya al ultimo
                         provisionaryWaypointTurnaround = false; //Le hago false el turn around, asi aca solo entro cuando cambio
@@ -145,8 +145,8 @@ public class Personaje : MonoBehaviour
                     if (_currentWaypoint < 0) //Cuando es menor que 0
                     {
                         _currentWaypoint = 1; //Lo hago focusear el primer waypoint
-                       rightWay = true; //Cambio al sentido correcto
-                       provisionaryWaypointTurnaround = true; //Le vuelvo a hacer true el primer caso de si es 0 y cambia, asi elige el ultimo waypoint
+                        rightWay = true; //Cambio al sentido correcto
+                        provisionaryWaypointTurnaround = true; //Le vuelvo a hacer true el primer caso de si es 0 y cambia, asi elige el ultimo waypoint
 
                     }
 
@@ -156,7 +156,7 @@ public class Personaje : MonoBehaviour
         };
 
 
-        moving.OnExit += x => 
+        moving.OnExit += x =>
         {
             Debug.Log("sali");
         };
