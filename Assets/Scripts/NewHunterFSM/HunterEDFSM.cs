@@ -26,7 +26,10 @@ public class HunterEDFSM : MonoBehaviour
     [Header("Chase")]
     public float killBoidDistance; //Distancia en la cual mato al boid
     public Boid target; //El boid que voy a targetear
+
     public float chaseDistance; //La distancia en la cual lo voy a focusear
+    public float loseDistance; //La distancia en la que vuelvo a patrol si no lo encuentro
+
     public List<Vector3> _desiredVectors; //Una lista para guardar la posicion de el boid que voy a focusear
     public List<float> _magnitudes; //Una lista donde guardo las magnitudes (la magnitud del desired)
     public List<Boid> auxiliarList; //Lista auxiliar de boids
@@ -105,6 +108,7 @@ public class HunterEDFSM : MonoBehaviour
         //MOVING
         moving.OnEnter += x =>
         {
+            target = null;
             Debug.Log("entre a fsm moving");
         };
 
@@ -184,10 +188,28 @@ public class HunterEDFSM : MonoBehaviour
         chasing.OnUpdate += () =>
         {
             Debug.Log("tuki");
+
+            staminaBar -= Time.deltaTime;
+
+            //Si la stamina llega a 0 se vuelve a idle a descansar (podria hacer un estado de rest honestamente)
+            if(staminaBar <0)
+                SendInputToFSM(PlayerInputs.IDLE);
+
+
             Vector3 dir = target.transform.position - transform.position;
             transform.forward = dir;
-            transform.position += transform.forward * waypointSpeed * .5f * Time.deltaTime;
+            //Si es menor a la chase distance, entonces lo chasea
+            if (dir.magnitude < chaseDistance)
+                transform.position += transform.forward * waypointSpeed * .5f * Time.deltaTime;
+            //Sino directamnete lo esquiva
+            else
+                SendInputToFSM(PlayerInputs.MOVE);
 
+        };
+
+        chasing.OnExit += x =>
+        {
+            
         };
 
 
@@ -247,7 +269,8 @@ public class HunterEDFSM : MonoBehaviour
     {
         //SendInputToFSM(PlayerInputs.IDLE);
     }
-    public int counter;
+
+
     IEnumerable<Tuple<Vector3, float, Boid>> BoidSearcher(List<Boid> allBoids)
     {
         var myCol = allBoids.Aggregate(new List<Tuple<Vector3, float, Boid>>(), (acum, current) =>
@@ -259,7 +282,7 @@ public class HunterEDFSM : MonoBehaviour
 
             return acum;
 
-        }).OrderByDescending(x => x.Item2);
+        }).OrderBy(x => x.Item2);
 
         return myCol;
 

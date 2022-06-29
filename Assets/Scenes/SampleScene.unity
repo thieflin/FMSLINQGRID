@@ -1170,7 +1170,8 @@ MonoBehaviour:
   _desired: {x: 0, y: 0, z: 0}
   killBoidDistance: 0
   target: {fileID: 0}
-  chaseDistance: 10
+  chaseDistance: 5
+  loseDistance: 10
   _desiredVectors: []
   _magnitudes: []
   auxiliarList: []
