@@ -7,7 +7,7 @@ using System;
 
 public class HunterEDFSM : MonoBehaviour
 {
-    public enum PlayerInputs { MOVE, IDLE, CHASE, ATTACK }
+    public enum PlayerInputs { MOVE, IDLE, CHASE, ATTACK, REST, CONQUER }
     private EventFSM<PlayerInputs> _myFsm;
     private Rigidbody _myRb;
     public Renderer _myRen;
@@ -40,7 +40,18 @@ public class HunterEDFSM : MonoBehaviour
 
     [Header("Idle state")]
     public float staminaBar;
-    public bool isResting;
+    public bool isResting; //Stamina bar
+
+
+    [Header("IdleState")]
+    public float restingTime; //Descanso luego de comer
+
+    [Header("StatusMaterial")]
+    public Material matIdle;
+    public Material matChase;
+    public Material matPatrol;
+    public Material matRestingAfterAttack;
+    public Material matConquer;
 
 
     public List<Transform> allWaypoints = new List<Transform>(); //Lista de waypoints en los cuales se va a mover la IA
@@ -49,7 +60,7 @@ public class HunterEDFSM : MonoBehaviour
     private void Awake()
     {
         //_myRb = gameObject.GetComponent<Rigidbody>();
-
+        _myRen = GetComponent<Renderer>();
         //PARTE 1: SETEO INICIAL
 
         //Creo los estados
@@ -57,32 +68,50 @@ public class HunterEDFSM : MonoBehaviour
         var moving = new State<PlayerInputs>("WaypointState");
         var chasing = new State<PlayerInputs>("Chase");
         var attacking = new State<PlayerInputs>("Attack");
+        var resting = new State<PlayerInputs>("Resting");
+        var conquered = new State<PlayerInputs>("Conquer");
 
         //creo las transiciones
+        //Idle puede ir a moverse
         StateConfigurer.Create(idle)
             .SetTransition(PlayerInputs.MOVE, moving)
-            .SetTransition(PlayerInputs.CHASE, chasing)
             .Done(); //aplico y asigno
 
+        //Moving puede ir a idle si se cansa o a chase si puede atacar
         StateConfigurer.Create(moving)
             .SetTransition(PlayerInputs.IDLE, idle)
             .SetTransition(PlayerInputs.CHASE, chasing)
             .Done();
 
+        //Chase puede ir a idle si se cansa, a moving si pierde el target o a attacking si esta en rango
         StateConfigurer.Create(chasing)
             .SetTransition(PlayerInputs.IDLE, idle)
             .SetTransition(PlayerInputs.MOVE, moving)
             .SetTransition(PlayerInputs.ATTACK, attacking)
             .Done();
 
+        //Despues de attacar va a resting si o si para descansar un tiempo
         StateConfigurer.Create(attacking)
+            .SetTransition(PlayerInputs.REST, resting)
+            .Done();
+
+        //Luego de descansar vuelve directamente a patrullar
+        StateConfigurer.Create(resting)
             .SetTransition(PlayerInputs.MOVE, moving)
+            .SetTransition(PlayerInputs.CONQUER, conquered)
+            .Done();
+
+        //Una vez que los agarra a todos, de conquer pasa a resting
+        StateConfigurer.Create(conquered)
+            .SetTransition(PlayerInputs.REST, resting)
             .Done();
 
         //Empiezo a setear las variables como antes en la fsm comun
 
         idle.OnEnter += x =>
         {
+            _myRen.material = matIdle;
+
             if (staminaBar <= 0) //Si la stamina es menor que 0 le activo para que descanse
                 isResting = true;
             else //Si no, en el start directamente me voy al patrol 
@@ -113,6 +142,7 @@ public class HunterEDFSM : MonoBehaviour
         //MOVING
         moving.OnEnter += x =>
         {
+            _myRen.material = matPatrol;
             target = null;
             Debug.Log("entre a fsm moving");
         };
@@ -120,6 +150,9 @@ public class HunterEDFSM : MonoBehaviour
         //En el update manejo lo que seria la stamina para ver cuanto se puede mover
         moving.OnUpdate += () =>
         {
+
+
+
             staminaBar -= Time.deltaTime * 0.5f; //Cuando patruya pierde stamina
 
             if (staminaBar <= 0) //Si llega a 0 de stamina va a Idle y recarga
@@ -128,18 +161,20 @@ public class HunterEDFSM : MonoBehaviour
             //Busco de todos los boids el que me sirve
             boids = BoidSearcher(bm.allBoids).ToList();
 
-            
-            var closestBoid = boids.First(); //Elijo el boid que mas cerca mio esta
 
-            Debug.Log((int)closestBoid.Item2);
+            var closestBoid = boids.FirstOrDefault(); //Elijo el boid que mas cerca mio esta
+
 
             //Debug.Log(closestBoid.Item2);
+            //Si la lista de boids cercanos esta vacia, no ingreso mas aca
+
             if (closestBoid.Item2 < chaseDistance) //Aca miro si estoy en chase distance, de estarlo, voy derecho a chase, y le ASIGNO un target a mi hunter, en este caso, el que mas cerca este
             {
                 target = closestBoid.Item3; //Hago que el target sea el boid (current previo seleccionado que cumpla con la condicion)
                 SendInputToFSM(PlayerInputs.CHASE);
 
             }
+
         };
 
 
@@ -152,12 +187,12 @@ public class HunterEDFSM : MonoBehaviour
 
             if (dir.magnitude < 0.15f)
             {
-                    _currentWaypoint++;
-                    if (_currentWaypoint > allWaypoints.Count - 1)
-                    {
-                        _currentWaypoint = 0;
+                _currentWaypoint++;
+                if (_currentWaypoint > allWaypoints.Count - 1)
+                {
+                    _currentWaypoint = 0;
 
-                    }
+                }
             }
         };
 
@@ -169,6 +204,7 @@ public class HunterEDFSM : MonoBehaviour
 
         chasing.OnEnter += x =>
         {
+            _myRen.material = matChase;
             Debug.Log("entre a chase");
         };
 
@@ -179,7 +215,7 @@ public class HunterEDFSM : MonoBehaviour
             staminaBar -= Time.deltaTime;
 
             //Si la stamina llega a 0 se vuelve a idle a descansar (podria hacer un estado de rest honestamente)
-            if(staminaBar <0)
+            if (staminaBar < 0)
                 SendInputToFSM(PlayerInputs.IDLE);
 
 
@@ -189,13 +225,13 @@ public class HunterEDFSM : MonoBehaviour
             if (dir.magnitude < chaseDistance)
             {
                 transform.position += transform.forward * waypointSpeed * 1.2f * Time.deltaTime;
-                
+
                 //Si estoy en condicion de atacarlo, entonces hago que el target cambie su color, vuelve a move
                 if (dir.magnitude < attackDistance)
                 {
                     SendInputToFSM(PlayerInputs.ATTACK);
                 }
-                    
+
             }
             //Sino directamnete lo esquiva
             else
@@ -213,19 +249,57 @@ public class HunterEDFSM : MonoBehaviour
         {
             target.rend.material = target.matAlly;
             target.isEnemy = false;
-            SendInputToFSM(PlayerInputs.MOVE);
+            SendInputToFSM(PlayerInputs.REST);
         };
 
         attacking.OnUpdate += () =>
         {
-            Debug.Log("en attacking ASHE");
+            Debug.Log("en attacking");
         };
 
 
         attacking.OnExit += x =>
         {
+            //Cada vez que salgo de comerme a uno actualizo la lista de posibles targets
+            myEnemyBoids = EnemyBoids(bm.allBoids).ToList();
             Debug.Log("sali de attack");
         };
+
+
+        resting.OnEnter += x =>
+        {
+            _myRen.material = matRestingAfterAttack;
+            restingTime = 5;
+            Debug.Log("ingrese a descansar despues de comer exitosamente");
+        };
+
+        resting.OnUpdate += () =>
+        {
+            restingTime -= Time.deltaTime;
+            //Una vez que termina de descansar, sale a pistear
+            if (restingTime <= 0)
+                SendInputToFSM(PlayerInputs.MOVE);
+
+            if (myEnemyBoids.Count() == 0)
+                SendInputToFSM(PlayerInputs.CONQUER);
+        };
+
+        resting.OnExit += x =>
+        {
+            Debug.Log("sali");
+        };
+
+        conquered.OnEnter += x =>
+        {
+            _myRen.material = matConquer;
+        };
+
+        conquered.OnUpdate += () =>
+        {
+            Debug.Log("TRIUNFO EL PODER DE LA NUEVA FSM");
+        };
+
+
         //Action Poisoned = () => { };
         //float currentTime = 0;
         //Poisoned += () =>
@@ -267,7 +341,8 @@ public class HunterEDFSM : MonoBehaviour
     //Armo la lista de enemigos
     public void Start()
     {
-        
+        //Seteo las listas de boids
+        myEnemyBoids = EnemyBoids(bm.allBoids).ToList();
         safeWaypoints = SafeWaypoint(wpSafety).ToList();
     }
 
@@ -283,7 +358,7 @@ public class HunterEDFSM : MonoBehaviour
         _myFsm.Update();
 
         //Prov
-        myEnemyBoids = EnemyBoids(bm.allBoids).ToList();
+
     }
 
     private void FixedUpdate()
@@ -314,7 +389,7 @@ public class HunterEDFSM : MonoBehaviour
         return myCol;
 
     }
-    
+
     //Filtro a los boids aliados de los boids enemigos
     // IA-TP2-PROGRAMACIONFUNCIONAL - 
     IEnumerable<Boid> EnemyBoids(List<Boid> allBoids)

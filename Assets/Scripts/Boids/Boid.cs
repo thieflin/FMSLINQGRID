@@ -44,7 +44,7 @@ public class Boid : MonoBehaviour
 
     private void Awake()
     {
-        currentHp = Random.Range(80, 100);
+        currentHp = Random.Range(0, 100);
         rend = GetComponent<Renderer>();
         
     }

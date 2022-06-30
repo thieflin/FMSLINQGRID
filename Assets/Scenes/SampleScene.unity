@@ -1669,6 +1669,13 @@ MonoBehaviour:
   bm: {fileID: 1692783894}
   staminaBar: 0
   isResting: 0
+  restingTime: 0
+  matIdle: {fileID: 2100000, guid: 6464a7b736ded8840b1cd6076ed4c2ff, type: 2}
+  matChase: {fileID: 2100000, guid: 44594777a7fb1dc4382902e0ca382765, type: 2}
+  matPatrol: {fileID: 2100000, guid: 7dde8b2843c476141bb387c7c89d3d2b, type: 2}
+  matRestingAfterAttack: {fileID: 2100000, guid: a98391a86bfa36e45ae071c3586b4507,
+    type: 2}
+  matConquer: {fileID: 2100000, guid: 2b246f925816af54ca9784b19cb253e3, type: 2}
   allWaypoints:
   - {fileID: 153760409}
   - {fileID: 1792234462}
@@ -2587,7 +2594,7 @@ PrefabInstance:
     - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
         type: 3}
       propertyPath: isEnemy
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
         type: 3}
@@ -3050,7 +3057,7 @@ PrefabInstance:
     - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
         type: 3}
       propertyPath: isEnemy
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
         type: 3}
@@ -3244,7 +3251,7 @@ PrefabInstance:
     - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
         type: 3}
       propertyPath: isEnemy
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
         type: 3}
@@ -3670,7 +3677,7 @@ PrefabInstance:
     - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
         type: 3}
       propertyPath: isEnemy
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
         type: 3}
@@ -4435,7 +4442,7 @@ PrefabInstance:
     - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
         type: 3}
       propertyPath: isEnemy
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
         type: 3}
