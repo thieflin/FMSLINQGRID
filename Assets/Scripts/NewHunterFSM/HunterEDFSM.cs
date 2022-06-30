@@ -9,22 +9,15 @@ public class HunterEDFSM : MonoBehaviour
 {
     public enum PlayerInputs { MOVE, IDLE, CHASE, ATTACK, REST, CONQUER }
     private EventFSM<PlayerInputs> _myFsm;
-    private Rigidbody _myRb;
     public Renderer _myRen;
 
     [Header(" Variables de movimiento")]
-    public Vector3 _velocity;
     public float waypointSpeed;
-    public float maxForce;
-    public bool rightWay;
-    public bool provisionaryWaypointTurnaround;
+
     private int _currentWaypoint;
 
-    [Header("Vector Desired")]
-    public Vector3 _desired;
-
     [Header("Chase")]
-    public float killBoidDistance; //Distancia en la cual mato al boid
+ 
     public Boid target; //El boid que voy a targetear
 
     public float chaseDistance; //La distancia en la cual lo voy a focusear
@@ -144,6 +137,9 @@ public class HunterEDFSM : MonoBehaviour
         {
             _myRen.material = matPatrol;
             target = null;
+
+            //Seteo las listas de boids
+            myEnemyBoids = EnemyBoids(bm.allBoids).ToList();
             Debug.Log("entre a fsm moving");
         };
 
@@ -159,7 +155,7 @@ public class HunterEDFSM : MonoBehaviour
                 SendInputToFSM(PlayerInputs.IDLE);
 
             //Busco de todos los boids el que me sirve
-            boids = BoidSearcher(bm.allBoids).ToList();
+            boids = BoidSearcher(myEnemyBoids).ToList();
 
 
             var closestBoid = boids.FirstOrDefault(); //Elijo el boid que mas cerca mio esta
@@ -341,8 +337,7 @@ public class HunterEDFSM : MonoBehaviour
     //Armo la lista de enemigos
     public void Start()
     {
-        //Seteo las listas de boids
-        myEnemyBoids = EnemyBoids(bm.allBoids).ToList();
+
         safeWaypoints = SafeWaypoint(wpSafety).ToList();
     }
 
@@ -375,7 +370,7 @@ public class HunterEDFSM : MonoBehaviour
     //Buscado de boid cercano IA TP2 - P1 - PROGRAMACION FUNCIONAL
     IEnumerable<Tuple<Vector3, float, Boid>> BoidSearcher(List<Boid> enemyBoids)
     {
-        var myCol = myEnemyBoids.Aggregate(new List<Tuple<Vector3, float, Boid>>(), (acum, current) =>
+        var myCol = enemyBoids.Aggregate(new List<Tuple<Vector3, float, Boid>>(), (acum, current) =>
         {
             var dir = current.transform.position - transform.position;
             var tuple = Tuple.Create(dir, dir.magnitude, current);
@@ -390,7 +385,7 @@ public class HunterEDFSM : MonoBehaviour
 
     }
 
-    //Filtro a los boids aliados de los boids enemigos
+    //Filtro a los boids aliados de los boids enemigos y que tengan una condicion de vida especifica
     // IA-TP2-PROGRAMACIONFUNCIONAL - 
     IEnumerable<Boid> EnemyBoids(List<Boid> allBoids)
     {
@@ -413,6 +408,4 @@ public class HunterEDFSM : MonoBehaviour
 
         return myCol;
     }
-
-
 }

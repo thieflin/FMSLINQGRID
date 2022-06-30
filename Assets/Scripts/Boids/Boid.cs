@@ -44,19 +44,19 @@ public class Boid : MonoBehaviour
 
     private void Awake()
     {
-        currentHp = Random.Range(0, 100);
+        currentHp = Random.Range(60, 100);
         rend = GetComponent<Renderer>();
+
+        //Aca defino a los que son traidores y los que no
+       
         
     }
 
     void Start()
     {
 
-
-        if (isEnemy)
-            rend.material = matEnemy;
-        else if(!isEnemy)
-            rend.material = matAlly;
+        if (!isEnemy) rend.material = matAlly;
+        else rend.material = matEnemy;
 
         BoidManager.instance.AddBoid(this);
 
@@ -287,7 +287,5 @@ public class Boid : MonoBehaviour
     }
 
 
-
-
-
+    
 }
