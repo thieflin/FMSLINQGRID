@@ -24,6 +24,11 @@ public class BoidManager : MonoBehaviour
     {
        TraitorBoids(allBoids).ToList();
     }
+
+
+    //IA2 TP P1
+
+
     //El lider enemigo infecto la conciencia de ciertos boids, por lo tanto todos sus lideres (sus primeros 3) y todos sus ultimos reclutas
     //(los ultimos 3) seran secuestrados!
 

@@ -215,18 +215,18 @@ public class Boid : MonoBehaviour
         {                                                                                                                     
             if (boid != this && Vector3.Distance(boid.transform.position, transform.position) < viewDistance)                 
             {                                                                                                                 
-                GridEntity closeEntities = this.GetComponent<GridEntity>();                                                    //IA2-P1
-                GridEntity boidEntity = boid.GetComponent<GridEntity>();                                                       //IA2-P1
-                                                                                                                               //IA2-P1
-                if (!closeEntities.entityInSameCell.Contains(boidEntity))                                                      //IA2-P1
-                {                                                                                                              //IA2-P1
-                    return desired;                                                                                            //IA2-P1
-                }                                                                                                              //IA2-P1
-                else                                                                                                           //IA2-P1
-                {                                                                                                              //IA2-P1
-                    desired += boid._velocity;                                                                                 //IA2-P1
-                    nearbyBoids++;                                                                                             //IA2-P1
-                }                                                                                                              //IA2-P1
+                GridEntity closeEntities = this.GetComponent<GridEntity>();                                                    //IA2-P2
+                GridEntity boidEntity = boid.GetComponent<GridEntity>();                                                       //IA2-P2
+                                                                                                                               //IA2-P2
+                if (!closeEntities.entityInSameCell.Contains(boidEntity))                                                      //IA2-P2
+                {                                                                                                              //IA2-P2
+                    return desired;                                                                                            //IA2-P2
+                }                                                                                                              //IA2-P2
+                else                                                                                                           //IA2-P2
+                {                                                                                                              //IA2-P2
+                    desired += boid._velocity;                                                                                 //IA2-P2
+                    nearbyBoids++;                                                                                             //IA2-P2
+                }                                                                                                              //IA2-P2
 
             }
         }

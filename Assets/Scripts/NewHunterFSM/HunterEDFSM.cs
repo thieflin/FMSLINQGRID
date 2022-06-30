@@ -11,6 +11,7 @@ public class HunterEDFSM : MonoBehaviour
 
     //GARRIDO-MENZELLA-FERNANDEZ
 
+    //TP - IA2 - FSM P2
 
     public enum PlayerInputs { MOVE, IDLE, CHASE, ATTACK, REST, CONQUER }
     private EventFSM<PlayerInputs> _myFsm;
@@ -376,6 +377,8 @@ public class HunterEDFSM : MonoBehaviour
         //SendInputToFSM(PlayerInputs.IDLE);
     }
 
+
+    //IA2 TP P1
 
     //Buscado de boid cercano IA TP2 - P1 - PROGRAMACION FUNCIONAL
     IEnumerable<Tuple<Vector3, float, Boid>> BoidSearcher(List<Boid> enemyBoids)
