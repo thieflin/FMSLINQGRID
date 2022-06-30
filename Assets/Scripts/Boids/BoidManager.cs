@@ -30,10 +30,6 @@ public class BoidManager : MonoBehaviour
 
     IEnumerable<Boid> TraitorBoids(IEnumerable<Boid> allBoids)
     {
-        //Primero tomo los primeros 3 Boids, luego hago un concat y skipeo todos,
-        //Como si tengo 10 voids, origianlmenete tengo del slot 0 al 9, entonces si mi count da 10,
-        //y le pongo -3 solo deberia tomarme el 8 y el 9, ya que count va a dar 10 y eso va a dar slot 8 y 9,
-        //Por lo tanto hago count -4.
         var myCol = allBoids.Take(3).Concat(allBoids.Skip(allBoids.Count() - 4))
         //uNA VEZ Hecha mi primer lista, que son los que son enemigos, lo que hago es ahcer un aggregate y a cada current, osea
         //cada boid enemigo le hago la variable de enemy true y le defino su color

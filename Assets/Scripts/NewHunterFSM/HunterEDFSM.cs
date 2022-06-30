@@ -7,6 +7,11 @@ using System;
 
 public class HunterEDFSM : MonoBehaviour
 {
+    //TODO ESTE SCRIPT ES FSM + UN POCO DE PROGRAMACION FUNCIONAL (AL FINAL)
+
+    //GARRIDO-MENZELLA-FERNANDEZ
+
+
     public enum PlayerInputs { MOVE, IDLE, CHASE, ATTACK, REST, CONQUER }
     private EventFSM<PlayerInputs> _myFsm;
     public Renderer _myRen;
@@ -74,6 +79,7 @@ public class HunterEDFSM : MonoBehaviour
         StateConfigurer.Create(moving)
             .SetTransition(PlayerInputs.IDLE, idle)
             .SetTransition(PlayerInputs.CHASE, chasing)
+            .SetTransition(PlayerInputs.CONQUER, conquered)
             .Done();
 
         //Chase puede ir a idle si se cansa, a moving si pierde el target o a attacking si esta en rango
@@ -140,6 +146,10 @@ public class HunterEDFSM : MonoBehaviour
 
             //Seteo las listas de boids
             myEnemyBoids = EnemyBoids(bm.allBoids).ToList();
+
+            //en el caso de que NO HUBIERA NINGUNO CON MAS DE 50 DE VIDA PARA ATACAR
+            if(!myEnemyBoids.Any())
+                SendInputToFSM(PlayerInputs.CONQUER);
             Debug.Log("entre a fsm moving");
         };
 
@@ -386,7 +396,7 @@ public class HunterEDFSM : MonoBehaviour
     }
 
     //Filtro a los boids aliados de los boids enemigos y que tengan una condicion de vida especifica
-    // IA-TP2-PROGRAMACIONFUNCIONAL - 
+    // IA-TP2-PROGRAMACIONFUNCIONAL (WHERE - SELECT) 
     IEnumerable<Boid> EnemyBoids(List<Boid> allBoids)
     {
         //Si son enemigos y y tienen mas de 50 de vida la idea es que los ataque y los transforme a aliados
@@ -400,7 +410,7 @@ public class HunterEDFSM : MonoBehaviour
     //La idea es que cada waypoint sea SAFE o no sea SAFE, es decir la variable en el array de booleans, si la variable es true,
     //entonces va a ese waypoint, si la variable no es true, no va a ese waypoint
 
-    // IA TP-2 Programacion Funcional (ZIP)
+    // IA TP-2 Programacion Funcional (ZIP - WHERE)
     IEnumerable<Tuple<Waypoint, bool>> SafeWaypoint(WaypointsSafety wpList)
     {
         var myCol = wpList.waypoints.Zip(wpList.canEnter, (booleans, waypoints) => Tuple.Create(booleans, waypoints))
