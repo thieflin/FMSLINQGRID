@@ -183,8 +183,6 @@ public class SpatialGrid : MonoBehaviour
                                                                                                                                             //IA2-P1
                     n.myPos = GetPositionInGrid(n.transform.position);                                                                      //IA2-P1
                                                                                                                                             //IA2-P1
-                    Debug.Log(ent.myPos.Item1 + " + " + ent.myPos.Item2 + " + " + ent.gameObject.name);                                     //IA2-P1
-                                                                                                                                            //IA2-P1
                     if (!ent.entityInSameCell.Contains(n) && ent.myPos.Item1 == n.myPos.Item1 && ent.myPos.Item2 == n.myPos.Item2)          //IA2-P1
                     {                                                                                                                       //IA2-P1
                         ent.entityInSameCell.Add(n);                                                                                        //IA2-P1
