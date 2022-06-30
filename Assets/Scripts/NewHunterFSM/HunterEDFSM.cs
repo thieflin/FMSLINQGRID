@@ -30,11 +30,9 @@ public class HunterEDFSM : MonoBehaviour
     public float chaseDistance; //La distancia en la cual lo voy a focusear
     public float loseDistance; //La distancia en la que vuelvo a patrol si no lo encuentro
 
-    public List<Vector3> _desiredVectors; //Una lista para guardar la posicion de el boid que voy a focusear
-    public List<float> _magnitudes; //Una lista donde guardo las magnitudes (la magnitud del desired)
-    public List<Boid> auxiliarList; //Lista auxiliar de boids
-    public float minValue, minValueIndex; //Valor minimo de distancia para que focusee a ese, y el valor de su index en la lista
-    public float futureTime;
+    public List<Boid> myEnemyBoids = new List<Boid>();
+    public WaypointsSafety wpSafety;
+
     public BoidManager bm;
 
     public List<Tuple<Vector3, float, Boid>> boids = new List<Tuple<Vector3, float, Boid>>();//Lista de tuplas para saber a que boid sigo
@@ -46,6 +44,7 @@ public class HunterEDFSM : MonoBehaviour
 
 
     public List<Transform> allWaypoints = new List<Transform>(); //Lista de waypoints en los cuales se va a mover la IA
+    public List<Tuple<Waypoint, bool>> safeWaypoints = new List<Tuple<Waypoint, bool>>();
 
     private void Awake()
     {
@@ -123,7 +122,11 @@ public class HunterEDFSM : MonoBehaviour
             //Busco de todos los boids el que me sirve
             boids = BoidSearcher(bm.allBoids).ToList();
 
+            
             var closestBoid = boids.First(); //Elijo el boid que mas cerca mio esta
+
+            Debug.Log((int)closestBoid.Item2);
+
             //Debug.Log(closestBoid.Item2);
             if (closestBoid.Item2 < chaseDistance) //Aca miro si estoy en chase distance, de estarlo, voy derecho a chase, y le ASIGNO un target a mi hunter, en este caso, el que mas cerca este
             {
@@ -137,41 +140,18 @@ public class HunterEDFSM : MonoBehaviour
         moving.OnFixedUpdate += () =>
         {
             //Esto es el comportamiento de waypoints
-            Vector3 dir = allWaypoints[_currentWaypoint].transform.position - transform.position;
+            Vector3 dir = safeWaypoints[_currentWaypoint].Item1.transform.position - transform.position;
             transform.forward = dir;
             transform.position += transform.forward * waypointSpeed * Time.deltaTime;
 
             if (dir.magnitude < 0.15f)
             {
-                if (rightWay) //Hago un sentido correcto, y ejecuto los waypoints
-                {
                     _currentWaypoint++;
                     if (_currentWaypoint > allWaypoints.Count - 1)
                     {
                         _currentWaypoint = 0;
-                        rightWay = false;
 
                     }
-
-                }
-                else //Le quito el sentido correcto, como cambia al 0 le armor un bool y le digo
-                {
-                    if (_currentWaypoint == 0 && provisionaryWaypointTurnaround) //Si sos 0 y acabas de cambiar
-                    {
-                        _currentWaypoint = 4; //Tu proximo waypoint es el count total +1, cosa que vaya al ultimo
-                        provisionaryWaypointTurnaround = false; //Le hago false el turn around, asi aca solo entro cuando cambio
-                    }
-                    _currentWaypoint--;
-                    if (_currentWaypoint < 0) //Cuando es menor que 0
-                    {
-                        _currentWaypoint = 1; //Lo hago focusear el primer waypoint
-                        rightWay = true; //Cambio al sentido correcto
-                        provisionaryWaypointTurnaround = true; //Le vuelvo a hacer true el primer caso de si es 0 y cambia, asi elige el ultimo waypoint
-
-                    }
-
-                }
-
             }
         };
 
@@ -251,6 +231,16 @@ public class HunterEDFSM : MonoBehaviour
         _myFsm = new EventFSM<PlayerInputs>(idle);
     }
 
+
+    //Armo la lista de enemigos
+    public void Start()
+    {
+        myEnemyBoids = EnemyBoids(bm.allBoids).ToList();
+        safeWaypoints = SafeWaypoint(wpSafety).ToList();
+    }
+
+
+
     private void SendInputToFSM(PlayerInputs inp)
     {
         _myFsm.SendInput(inp);
@@ -272,10 +262,10 @@ public class HunterEDFSM : MonoBehaviour
     }
 
 
-    //Buscado de boid cercano
-    IEnumerable<Tuple<Vector3, float, Boid>> BoidSearcher(List<Boid> allBoids)
+    //Buscado de boid cercano IA TP2 - P1 - PROGRAMACION FUNCIONAL
+    IEnumerable<Tuple<Vector3, float, Boid>> BoidSearcher(List<Boid> enemyBoids)
     {
-        var myCol = allBoids.Aggregate(new List<Tuple<Vector3, float, Boid>>(), (acum, current) =>
+        var myCol = myEnemyBoids.Aggregate(new List<Tuple<Vector3, float, Boid>>(), (acum, current) =>
         {
             var dir = current.transform.position - transform.position;
             var tuple = Tuple.Create(dir, dir.magnitude, current);
@@ -290,6 +280,29 @@ public class HunterEDFSM : MonoBehaviour
 
     }
     
-    
+    //Filtro a los boids aliados de los boids enemigos
+    // IA-TP2-PROGRAMACIONFUNCIONAL - 
+    IEnumerable<Boid> EnemyBoids(List<Boid> allBoids)
+    {
+        //Si son enemigos y y tienen mas de 50 de vida la idea es que los ataque y los transforme a aliados
+        var myCol = allBoids.Where(x => x.isEnemy && x.currentHp >= 50)
+                            .Select(x => x);
+
+        return myCol;
+    }
+
+
+    //La idea es que cada waypoint sea SAFE o no sea SAFE, es decir la variable en el array de booleans, si la variable es true,
+    //entonces va a ese waypoint, si la variable no es true, no va a ese waypoint
+
+    // IA TP-2 Programacion Funcional (ZIP)
+    IEnumerable<Tuple<Waypoint, bool>> SafeWaypoint(WaypointsSafety wpList)
+    {
+        var myCol = wpList.waypoints.Zip(wpList.canEnter, (booleans, waypoints) => Tuple.Create(booleans, waypoints))
+              .Where(x => x.Item2);
+
+        return myCol;
+    }
+
 
 }

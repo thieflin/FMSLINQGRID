@@ -33,8 +33,26 @@ public class Boid : MonoBehaviour
     public float cohesionWeight;
     public float alignWeight;
 
+
+    [Header("Variables extras programacion funcional")]
+    public bool isEnemy;
+    public MeshRenderer rend;
+    public int currentHp;
+
+    private void Awake()
+    {
+        currentHp = Random.Range(0, 100);
+    }
+
     void Start()
     {
+        
+
+        if (isEnemy)
+            gameObject.GetComponent<MeshRenderer>().material.color = Color.blue;
+        else
+            gameObject.GetComponent<MeshRenderer>().material.color = Color.red;
+
         BoidManager.instance.AddBoid(this);
 
         Vector3 randomDirection = new Vector3(Random.Range(-1f, 1f), 0, Random.Range(-1f, 1f));
@@ -224,9 +242,9 @@ public class Boid : MonoBehaviour
         Vector3 desired = new Vector3();
         int nearbyBoids = 0;
 
-        var myCol = BoidManager.instance.allBoids.Select(x => x);
 
-        foreach (var boid in myCol /*BoidManager.instance.allBoids*/) //Reviso en cada elemento de la lista constituida por mis boids
+
+        foreach (var boid in BoidManager.instance.allBoids) //Reviso en cada elemento de la lista constituida por mis boids
         {
             Vector3 distance = boid.transform.position - transform.position;
 
