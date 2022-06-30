@@ -13,5 +13,4 @@ public static class Utility {
 		return param;
 	}
 
-
 }

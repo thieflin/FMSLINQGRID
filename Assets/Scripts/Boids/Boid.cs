@@ -28,7 +28,7 @@ public class Boid : MonoBehaviour
     public float viewDistance;
     public float separationDistance;
 
-    [Header ("Floats Sep, Coh, Alig")]
+    [Header("Floats Sep, Coh, Alig")]
     public float separationWeight;
     public float cohesionWeight;
     public float alignWeight;
@@ -44,7 +44,7 @@ public class Boid : MonoBehaviour
         AddForce(randomDirection);
     }
 
-    
+
     void Update()
     {
         CheckBounds();
@@ -52,7 +52,7 @@ public class Boid : MonoBehaviour
         CourseOfAction();
         transform.position += _velocity * Time.deltaTime;
         transform.forward = _velocity;
-        
+
     }
     public void CourseOfAction()
     {
@@ -74,7 +74,7 @@ public class Boid : MonoBehaviour
 
     public void Arrive()
     {
-        
+
         Vector3 desired = foodTarget.transform.position - transform.position; //Desired es el vector que se da entre el target y el boid
 
         if (desired.magnitude < detectionRadio) //Si entro en el radio de deteccion, ahi activo arrive, sino me mantengo fuera de ello, solo lo targeteo cuando estoy lo suficientemnete creca
@@ -95,7 +95,7 @@ public class Boid : MonoBehaviour
             {
                 foodTimer = Random.Range(5, 11); //Seteo para que la comida no se spawnee cada un mismmo tiempo siempre
                 StartCoroutine(RestoreFood());
-                
+
             }
 
 
@@ -113,15 +113,15 @@ public class Boid : MonoBehaviour
             AddForce(steering);
 
         }
-        
+
     }
 
     IEnumerator RestoreFood() //La corrutina que ejecuta lo que hace es acomodar en un lugar random a la comida, y desacvitarla, esperar y luego activarla
     {
         foodTarget.transform.position = new Vector3(Random.Range(-3, 3), 0, Random.Range(-8, 8)); //La posicion randomizada
-        foodTarget.SetActive(false); 
+        foodTarget.SetActive(false);
         yield return new WaitForSeconds(foodTimer); //Paso food timer, cada vez que me como la comida, hago que el tiempo para que vuelva a respawnear sea distinto
-        foodTarget.SetActive(true); 
+        foodTarget.SetActive(true);
     }
 
     #endregion
@@ -136,7 +136,7 @@ public class Boid : MonoBehaviour
 
         Vector3 desired = futurePos - transform.position;
 
-        if(desired.magnitude < evadeRadio)
+        if (desired.magnitude < evadeRadio)
         {
             desired.Normalize();
             desired *= maxSpeed;
@@ -148,7 +148,7 @@ public class Boid : MonoBehaviour
             AddForce(steering);
         }
 
-        
+
     }
     #endregion
 
@@ -187,14 +187,27 @@ public class Boid : MonoBehaviour
     {
         Vector3 desired = new Vector3();
         int nearbyBoids = 0;
-        foreach (var boid in BoidManager.instance.allBoids)
-        {
-            if (boid != this && Vector3.Distance(boid.transform.position, transform.position) < viewDistance)
-            {
-                desired += boid._velocity;
-                nearbyBoids++;
+
+        foreach (var boid in BoidManager.instance.allBoids)                                                                   
+        {                                                                                                                     
+            if (boid != this && Vector3.Distance(boid.transform.position, transform.position) < viewDistance)                 
+            {                                                                                                                 
+                GridEntity closeEntities = this.GetComponent<GridEntity>();                                                    //IA2-P1
+                GridEntity boidEntity = boid.GetComponent<GridEntity>();                                                       //IA2-P1
+                                                                                                                               //IA2-P1
+                if (!closeEntities.entityInSameCell.Contains(boidEntity))                                                      //IA2-P1
+                {                                                                                                              //IA2-P1
+                    return desired;                                                                                            //IA2-P1
+                }                                                                                                              //IA2-P1
+                else                                                                                                           //IA2-P1
+                {                                                                                                              //IA2-P1
+                    desired += boid._velocity;                                                                                 //IA2-P1
+                    nearbyBoids++;                                                                                             //IA2-P1
+                }                                                                                                              //IA2-P1
+
             }
         }
+
         if (nearbyBoids == 0) return Vector3.zero;
         desired /= nearbyBoids;
         desired.Normalize();
