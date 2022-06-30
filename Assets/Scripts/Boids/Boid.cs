@@ -36,22 +36,27 @@ public class Boid : MonoBehaviour
 
     [Header("Variables extras programacion funcional")]
     public bool isEnemy;
-    public MeshRenderer rend;
+    public Material matEnemy;
+    public Material matAlly;
     public int currentHp;
+
+    public Renderer rend;
 
     private void Awake()
     {
-        currentHp = Random.Range(0, 100);
+        currentHp = Random.Range(80, 100);
+        rend = GetComponent<Renderer>();
+        
     }
 
     void Start()
     {
-        
+
 
         if (isEnemy)
-            gameObject.GetComponent<MeshRenderer>().material.color = Color.blue;
-        else
-            gameObject.GetComponent<MeshRenderer>().material.color = Color.red;
+            rend.material = matEnemy;
+        else if(!isEnemy)
+            rend.material = matAlly;
 
         BoidManager.instance.AddBoid(this);
 

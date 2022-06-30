@@ -7,7 +7,7 @@ using System;
 
 public class HunterEDFSM : MonoBehaviour
 {
-    public enum PlayerInputs { MOVE, IDLE, CHASE }
+    public enum PlayerInputs { MOVE, IDLE, CHASE, ATTACK }
     private EventFSM<PlayerInputs> _myFsm;
     private Rigidbody _myRb;
     public Renderer _myRen;
@@ -28,7 +28,7 @@ public class HunterEDFSM : MonoBehaviour
     public Boid target; //El boid que voy a targetear
 
     public float chaseDistance; //La distancia en la cual lo voy a focusear
-    public float loseDistance; //La distancia en la que vuelvo a patrol si no lo encuentro
+    public float attackDistance; //La distancia en la que vuelvo a patrol si no lo encuentro
 
     public List<Boid> myEnemyBoids = new List<Boid>();
     public WaypointsSafety wpSafety;
@@ -56,6 +56,7 @@ public class HunterEDFSM : MonoBehaviour
         var idle = new State<PlayerInputs>("Idle");
         var moving = new State<PlayerInputs>("WaypointState");
         var chasing = new State<PlayerInputs>("Chase");
+        var attacking = new State<PlayerInputs>("Attack");
 
         //creo las transiciones
         StateConfigurer.Create(idle)
@@ -70,6 +71,11 @@ public class HunterEDFSM : MonoBehaviour
 
         StateConfigurer.Create(chasing)
             .SetTransition(PlayerInputs.IDLE, idle)
+            .SetTransition(PlayerInputs.MOVE, moving)
+            .SetTransition(PlayerInputs.ATTACK, attacking)
+            .Done();
+
+        StateConfigurer.Create(attacking)
             .SetTransition(PlayerInputs.MOVE, moving)
             .Done();
 
@@ -181,7 +187,16 @@ public class HunterEDFSM : MonoBehaviour
             transform.forward = dir;
             //Si es menor a la chase distance, entonces lo chasea
             if (dir.magnitude < chaseDistance)
-                transform.position += transform.forward * waypointSpeed * .5f * Time.deltaTime;
+            {
+                transform.position += transform.forward * waypointSpeed * 1.2f * Time.deltaTime;
+                
+                //Si estoy en condicion de atacarlo, entonces hago que el target cambie su color, vuelve a move
+                if (dir.magnitude < attackDistance)
+                {
+                    SendInputToFSM(PlayerInputs.ATTACK);
+                }
+                    
+            }
             //Sino directamnete lo esquiva
             else
                 SendInputToFSM(PlayerInputs.MOVE);
@@ -194,6 +209,23 @@ public class HunterEDFSM : MonoBehaviour
         };
 
 
+        attacking.OnEnter += x =>
+        {
+            target.rend.material = target.matAlly;
+            target.isEnemy = false;
+            SendInputToFSM(PlayerInputs.MOVE);
+        };
+
+        attacking.OnUpdate += () =>
+        {
+            Debug.Log("en attacking ASHE");
+        };
+
+
+        attacking.OnExit += x =>
+        {
+            Debug.Log("sali de attack");
+        };
         //Action Poisoned = () => { };
         //float currentTime = 0;
         //Poisoned += () =>
@@ -235,7 +267,7 @@ public class HunterEDFSM : MonoBehaviour
     //Armo la lista de enemigos
     public void Start()
     {
-        myEnemyBoids = EnemyBoids(bm.allBoids).ToList();
+        
         safeWaypoints = SafeWaypoint(wpSafety).ToList();
     }
 
@@ -249,6 +281,9 @@ public class HunterEDFSM : MonoBehaviour
     private void Update()
     {
         _myFsm.Update();
+
+        //Prov
+        myEnemyBoids = EnemyBoids(bm.allBoids).ToList();
     }
 
     private void FixedUpdate()

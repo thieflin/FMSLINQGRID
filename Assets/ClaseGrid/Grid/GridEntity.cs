@@ -15,19 +15,14 @@ public class GridEntity : MonoBehaviour
 
     public List<GridEntity> entityInSameCell;
 
-    Renderer _rend;
 
     private void Awake()
     {
-        _rend = GetComponent<Renderer>();
+       
     }
 
     void Update()
     {
-        if (onGrid)
-            _rend.material.color = Color.red;
-        else
-            _rend.material.color = Color.gray;
 
         //Optimization: Hacer esto solo cuando realmente se mueve y no en el update
 

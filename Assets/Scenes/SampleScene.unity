@@ -144,6 +144,12 @@ MonoBehaviour:
   velocity: {x: 0, y: 0, z: 0}
   onGrid: 0
   entityInSameCell: []
+--- !u!23 &6405586 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 3769878350340226570, guid: 45c2ec69e7a51394da299b1488e5a7f0,
+    type: 3}
+  m_PrefabInstance: {fileID: 463628078}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &37753611
 GameObject:
   m_ObjectHideFlags: 0
@@ -220,9 +226,29 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
         type: 3}
+      propertyPath: mat
+      value: 
+      objectReference: {fileID: 2100000, guid: 844a1e29176a63e46ae94cde7f85b251, type: 2}
+    - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
+        type: 3}
+      propertyPath: rend
+      value: 
+      objectReference: {fileID: 6405586}
+    - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
+        type: 3}
       propertyPath: isEnemy
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
+        type: 3}
+      propertyPath: matAlly
+      value: 
+      objectReference: {fileID: 2100000, guid: f2c878ec892946547b3e03164e453b94, type: 2}
+    - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
+        type: 3}
+      propertyPath: matEnemy
+      value: 
+      objectReference: {fileID: 2100000, guid: 844a1e29176a63e46ae94cde7f85b251, type: 2}
     - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
         type: 3}
       propertyPath: nukeRadio
@@ -372,7 +398,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 844a1e29176a63e46ae94cde7f85b251, type: 2}
+      objectReference: {fileID: 10302, guid: 0000000000000000f000000000000000, type: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 45c2ec69e7a51394da299b1488e5a7f0, type: 3}
 --- !u!1 &85244946 stripped
@@ -649,9 +675,29 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
         type: 3}
+      propertyPath: mat
+      value: 
+      objectReference: {fileID: 2100000, guid: 844a1e29176a63e46ae94cde7f85b251, type: 2}
+    - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
+        type: 3}
+      propertyPath: rend
+      value: 
+      objectReference: {fileID: 6405586}
+    - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
+        type: 3}
       propertyPath: isEnemy
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
+        type: 3}
+      propertyPath: matAlly
+      value: 
+      objectReference: {fileID: 2100000, guid: f2c878ec892946547b3e03164e453b94, type: 2}
+    - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
+        type: 3}
+      propertyPath: matEnemy
+      value: 
+      objectReference: {fileID: 2100000, guid: 844a1e29176a63e46ae94cde7f85b251, type: 2}
     - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
         type: 3}
       propertyPath: nukeRadio
@@ -801,7 +847,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 844a1e29176a63e46ae94cde7f85b251, type: 2}
+      objectReference: {fileID: 10302, guid: 0000000000000000f000000000000000, type: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 45c2ec69e7a51394da299b1488e5a7f0, type: 3}
 --- !u!4 &269296649 stripped
@@ -824,9 +870,29 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
         type: 3}
+      propertyPath: mat
+      value: 
+      objectReference: {fileID: 2100000, guid: 844a1e29176a63e46ae94cde7f85b251, type: 2}
+    - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
+        type: 3}
+      propertyPath: rend
+      value: 
+      objectReference: {fileID: 6405586}
+    - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
+        type: 3}
       propertyPath: isEnemy
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
+        type: 3}
+      propertyPath: matAlly
+      value: 
+      objectReference: {fileID: 2100000, guid: f2c878ec892946547b3e03164e453b94, type: 2}
+    - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
+        type: 3}
+      propertyPath: matEnemy
+      value: 
+      objectReference: {fileID: 2100000, guid: 844a1e29176a63e46ae94cde7f85b251, type: 2}
     - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
         type: 3}
       propertyPath: nukeRadio
@@ -976,7 +1042,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 844a1e29176a63e46ae94cde7f85b251, type: 2}
+      objectReference: {fileID: 10302, guid: 0000000000000000f000000000000000, type: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 45c2ec69e7a51394da299b1488e5a7f0, type: 3}
 --- !u!1001 &388362398
@@ -993,9 +1059,29 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
         type: 3}
+      propertyPath: mat
+      value: 
+      objectReference: {fileID: 2100000, guid: 844a1e29176a63e46ae94cde7f85b251, type: 2}
+    - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
+        type: 3}
+      propertyPath: rend
+      value: 
+      objectReference: {fileID: 6405586}
+    - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
+        type: 3}
       propertyPath: isEnemy
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
+        type: 3}
+      propertyPath: matAlly
+      value: 
+      objectReference: {fileID: 2100000, guid: f2c878ec892946547b3e03164e453b94, type: 2}
+    - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
+        type: 3}
+      propertyPath: matEnemy
+      value: 
+      objectReference: {fileID: 2100000, guid: 844a1e29176a63e46ae94cde7f85b251, type: 2}
     - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
         type: 3}
       propertyPath: nukeRadio
@@ -1145,7 +1231,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 844a1e29176a63e46ae94cde7f85b251, type: 2}
+      objectReference: {fileID: 10302, guid: 0000000000000000f000000000000000, type: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 45c2ec69e7a51394da299b1488e5a7f0, type: 3}
 --- !u!1 &408678521
@@ -1245,9 +1331,29 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
         type: 3}
+      propertyPath: mat
+      value: 
+      objectReference: {fileID: 2100000, guid: 844a1e29176a63e46ae94cde7f85b251, type: 2}
+    - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
+        type: 3}
+      propertyPath: rend
+      value: 
+      objectReference: {fileID: 6405586}
+    - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
+        type: 3}
       propertyPath: isEnemy
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
+        type: 3}
+      propertyPath: matAlly
+      value: 
+      objectReference: {fileID: 2100000, guid: f2c878ec892946547b3e03164e453b94, type: 2}
+    - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
+        type: 3}
+      propertyPath: matEnemy
+      value: 
+      objectReference: {fileID: 2100000, guid: 844a1e29176a63e46ae94cde7f85b251, type: 2}
     - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
         type: 3}
       propertyPath: nukeRadio
@@ -1397,7 +1503,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 844a1e29176a63e46ae94cde7f85b251, type: 2}
+      objectReference: {fileID: 10302, guid: 0000000000000000f000000000000000, type: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 45c2ec69e7a51394da299b1488e5a7f0, type: 3}
 --- !u!4 &481424541 stripped
@@ -1557,7 +1663,7 @@ MonoBehaviour:
   killBoidDistance: 0
   target: {fileID: 0}
   chaseDistance: 5
-  loseDistance: 0
+  attackDistance: 0.3
   myEnemyBoids: []
   wpSafety: {fileID: 1503948138}
   bm: {fileID: 1692783894}
@@ -2249,9 +2355,29 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
         type: 3}
+      propertyPath: mat
+      value: 
+      objectReference: {fileID: 2100000, guid: 844a1e29176a63e46ae94cde7f85b251, type: 2}
+    - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
+        type: 3}
+      propertyPath: rend
+      value: 
+      objectReference: {fileID: 6405586}
+    - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
+        type: 3}
       propertyPath: isEnemy
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
+        type: 3}
+      propertyPath: matAlly
+      value: 
+      objectReference: {fileID: 2100000, guid: f2c878ec892946547b3e03164e453b94, type: 2}
+    - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
+        type: 3}
+      propertyPath: matEnemy
+      value: 
+      objectReference: {fileID: 2100000, guid: 844a1e29176a63e46ae94cde7f85b251, type: 2}
     - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
         type: 3}
       propertyPath: nukeRadio
@@ -2401,7 +2527,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 844a1e29176a63e46ae94cde7f85b251, type: 2}
+      objectReference: {fileID: 10302, guid: 0000000000000000f000000000000000, type: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 45c2ec69e7a51394da299b1488e5a7f0, type: 3}
 --- !u!1 &1051072576 stripped
@@ -2450,9 +2576,29 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
         type: 3}
+      propertyPath: mat
+      value: 
+      objectReference: {fileID: 2100000, guid: 844a1e29176a63e46ae94cde7f85b251, type: 2}
+    - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
+        type: 3}
+      propertyPath: rend
+      value: 
+      objectReference: {fileID: 6405586}
+    - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
+        type: 3}
       propertyPath: isEnemy
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
+        type: 3}
+      propertyPath: matAlly
+      value: 
+      objectReference: {fileID: 2100000, guid: f2c878ec892946547b3e03164e453b94, type: 2}
+    - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
+        type: 3}
+      propertyPath: matEnemy
+      value: 
+      objectReference: {fileID: 2100000, guid: 844a1e29176a63e46ae94cde7f85b251, type: 2}
     - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
         type: 3}
       propertyPath: nukeRadio
@@ -2602,7 +2748,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 844a1e29176a63e46ae94cde7f85b251, type: 2}
+      objectReference: {fileID: 10302, guid: 0000000000000000f000000000000000, type: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 45c2ec69e7a51394da299b1488e5a7f0, type: 3}
 --- !u!1 &1135109174
@@ -2687,9 +2833,29 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
         type: 3}
+      propertyPath: mat
+      value: 
+      objectReference: {fileID: 2100000, guid: 844a1e29176a63e46ae94cde7f85b251, type: 2}
+    - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
+        type: 3}
+      propertyPath: rend
+      value: 
+      objectReference: {fileID: 6405586}
+    - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
+        type: 3}
       propertyPath: isEnemy
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
+        type: 3}
+      propertyPath: matAlly
+      value: 
+      objectReference: {fileID: 2100000, guid: f2c878ec892946547b3e03164e453b94, type: 2}
+    - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
+        type: 3}
+      propertyPath: matEnemy
+      value: 
+      objectReference: {fileID: 2100000, guid: 844a1e29176a63e46ae94cde7f85b251, type: 2}
     - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
         type: 3}
       propertyPath: nukeRadio
@@ -2839,7 +3005,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 844a1e29176a63e46ae94cde7f85b251, type: 2}
+      objectReference: {fileID: 10302, guid: 0000000000000000f000000000000000, type: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 45c2ec69e7a51394da299b1488e5a7f0, type: 3}
 --- !u!4 &1173001029 stripped
@@ -2873,9 +3039,29 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
         type: 3}
+      propertyPath: mat
+      value: 
+      objectReference: {fileID: 2100000, guid: 844a1e29176a63e46ae94cde7f85b251, type: 2}
+    - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
+        type: 3}
+      propertyPath: rend
+      value: 
+      objectReference: {fileID: 6405586}
+    - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
+        type: 3}
       propertyPath: isEnemy
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
+        type: 3}
+      propertyPath: matAlly
+      value: 
+      objectReference: {fileID: 2100000, guid: f2c878ec892946547b3e03164e453b94, type: 2}
+    - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
+        type: 3}
+      propertyPath: matEnemy
+      value: 
+      objectReference: {fileID: 2100000, guid: 844a1e29176a63e46ae94cde7f85b251, type: 2}
     - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
         type: 3}
       propertyPath: nukeRadio
@@ -3025,7 +3211,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 844a1e29176a63e46ae94cde7f85b251, type: 2}
+      objectReference: {fileID: 10302, guid: 0000000000000000f000000000000000, type: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 45c2ec69e7a51394da299b1488e5a7f0, type: 3}
 --- !u!1001 &1246310175
@@ -3047,9 +3233,29 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
         type: 3}
+      propertyPath: mat
+      value: 
+      objectReference: {fileID: 2100000, guid: 844a1e29176a63e46ae94cde7f85b251, type: 2}
+    - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
+        type: 3}
+      propertyPath: rend
+      value: 
+      objectReference: {fileID: 6405586}
+    - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
+        type: 3}
       propertyPath: isEnemy
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
+        type: 3}
+      propertyPath: matAlly
+      value: 
+      objectReference: {fileID: 2100000, guid: f2c878ec892946547b3e03164e453b94, type: 2}
+    - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
+        type: 3}
+      propertyPath: matEnemy
+      value: 
+      objectReference: {fileID: 2100000, guid: 844a1e29176a63e46ae94cde7f85b251, type: 2}
     - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
         type: 3}
       propertyPath: maxSpeed
@@ -3209,7 +3415,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 844a1e29176a63e46ae94cde7f85b251, type: 2}
+      objectReference: {fileID: 10302, guid: 0000000000000000f000000000000000, type: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 45c2ec69e7a51394da299b1488e5a7f0, type: 3}
 --- !u!4 &1331222881 stripped
@@ -3264,9 +3470,29 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
         type: 3}
+      propertyPath: mat
+      value: 
+      objectReference: {fileID: 2100000, guid: 844a1e29176a63e46ae94cde7f85b251, type: 2}
+    - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
+        type: 3}
+      propertyPath: rend
+      value: 
+      objectReference: {fileID: 6405586}
+    - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
+        type: 3}
       propertyPath: isEnemy
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
+        type: 3}
+      propertyPath: matAlly
+      value: 
+      objectReference: {fileID: 2100000, guid: f2c878ec892946547b3e03164e453b94, type: 2}
+    - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
+        type: 3}
+      propertyPath: matEnemy
+      value: 
+      objectReference: {fileID: 2100000, guid: 844a1e29176a63e46ae94cde7f85b251, type: 2}
     - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
         type: 3}
       propertyPath: nukeRadio
@@ -3416,7 +3642,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 844a1e29176a63e46ae94cde7f85b251, type: 2}
+      objectReference: {fileID: 10302, guid: 0000000000000000f000000000000000, type: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 45c2ec69e7a51394da299b1488e5a7f0, type: 3}
 --- !u!1001 &1452656831
@@ -3433,9 +3659,29 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
         type: 3}
+      propertyPath: mat
+      value: 
+      objectReference: {fileID: 2100000, guid: 844a1e29176a63e46ae94cde7f85b251, type: 2}
+    - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
+        type: 3}
+      propertyPath: rend
+      value: 
+      objectReference: {fileID: 6405586}
+    - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
+        type: 3}
       propertyPath: isEnemy
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
+        type: 3}
+      propertyPath: matAlly
+      value: 
+      objectReference: {fileID: 2100000, guid: f2c878ec892946547b3e03164e453b94, type: 2}
+    - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
+        type: 3}
+      propertyPath: matEnemy
+      value: 
+      objectReference: {fileID: 2100000, guid: 844a1e29176a63e46ae94cde7f85b251, type: 2}
     - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
         type: 3}
       propertyPath: nukeRadio
@@ -3585,7 +3831,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 844a1e29176a63e46ae94cde7f85b251, type: 2}
+      objectReference: {fileID: 10302, guid: 0000000000000000f000000000000000, type: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 45c2ec69e7a51394da299b1488e5a7f0, type: 3}
 --- !u!4 &1456974953 stripped
@@ -3768,9 +4014,29 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
         type: 3}
+      propertyPath: mat
+      value: 
+      objectReference: {fileID: 2100000, guid: 844a1e29176a63e46ae94cde7f85b251, type: 2}
+    - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
+        type: 3}
+      propertyPath: rend
+      value: 
+      objectReference: {fileID: 6405586}
+    - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
+        type: 3}
       propertyPath: isEnemy
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
+        type: 3}
+      propertyPath: matAlly
+      value: 
+      objectReference: {fileID: 2100000, guid: f2c878ec892946547b3e03164e453b94, type: 2}
+    - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
+        type: 3}
+      propertyPath: matEnemy
+      value: 
+      objectReference: {fileID: 2100000, guid: 844a1e29176a63e46ae94cde7f85b251, type: 2}
     - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
         type: 3}
       propertyPath: nukeRadio
@@ -3920,7 +4186,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 844a1e29176a63e46ae94cde7f85b251, type: 2}
+      objectReference: {fileID: 10302, guid: 0000000000000000f000000000000000, type: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 45c2ec69e7a51394da299b1488e5a7f0, type: 3}
 --- !u!1 &1777530782
@@ -4158,9 +4424,29 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
         type: 3}
+      propertyPath: mat
+      value: 
+      objectReference: {fileID: 2100000, guid: 844a1e29176a63e46ae94cde7f85b251, type: 2}
+    - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
+        type: 3}
+      propertyPath: rend
+      value: 
+      objectReference: {fileID: 6405586}
+    - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
+        type: 3}
       propertyPath: isEnemy
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
+        type: 3}
+      propertyPath: matAlly
+      value: 
+      objectReference: {fileID: 2100000, guid: f2c878ec892946547b3e03164e453b94, type: 2}
+    - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
+        type: 3}
+      propertyPath: matEnemy
+      value: 
+      objectReference: {fileID: 2100000, guid: 844a1e29176a63e46ae94cde7f85b251, type: 2}
     - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
         type: 3}
       propertyPath: nukeRadio
@@ -4310,7 +4596,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 844a1e29176a63e46ae94cde7f85b251, type: 2}
+      objectReference: {fileID: 10302, guid: 0000000000000000f000000000000000, type: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 45c2ec69e7a51394da299b1488e5a7f0, type: 3}
 --- !u!1 &1894055001 stripped
@@ -4348,9 +4634,29 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
         type: 3}
+      propertyPath: mat
+      value: 
+      objectReference: {fileID: 2100000, guid: 844a1e29176a63e46ae94cde7f85b251, type: 2}
+    - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
+        type: 3}
+      propertyPath: rend
+      value: 
+      objectReference: {fileID: 6405586}
+    - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
+        type: 3}
       propertyPath: isEnemy
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
+        type: 3}
+      propertyPath: matAlly
+      value: 
+      objectReference: {fileID: 2100000, guid: f2c878ec892946547b3e03164e453b94, type: 2}
+    - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
+        type: 3}
+      propertyPath: matEnemy
+      value: 
+      objectReference: {fileID: 2100000, guid: 844a1e29176a63e46ae94cde7f85b251, type: 2}
     - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
         type: 3}
       propertyPath: nukeRadio
@@ -4500,7 +4806,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 844a1e29176a63e46ae94cde7f85b251, type: 2}
+      objectReference: {fileID: 10302, guid: 0000000000000000f000000000000000, type: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 45c2ec69e7a51394da299b1488e5a7f0, type: 3}
 --- !u!1 &2125427956
@@ -4574,9 +4880,29 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
         type: 3}
+      propertyPath: mat
+      value: 
+      objectReference: {fileID: 2100000, guid: 844a1e29176a63e46ae94cde7f85b251, type: 2}
+    - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
+        type: 3}
+      propertyPath: rend
+      value: 
+      objectReference: {fileID: 6405586}
+    - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
+        type: 3}
       propertyPath: isEnemy
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
+        type: 3}
+      propertyPath: matAlly
+      value: 
+      objectReference: {fileID: 2100000, guid: f2c878ec892946547b3e03164e453b94, type: 2}
+    - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
+        type: 3}
+      propertyPath: matEnemy
+      value: 
+      objectReference: {fileID: 2100000, guid: 844a1e29176a63e46ae94cde7f85b251, type: 2}
     - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
         type: 3}
       propertyPath: nukeRadio
@@ -4726,6 +5052,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 844a1e29176a63e46ae94cde7f85b251, type: 2}
+      objectReference: {fileID: 10302, guid: 0000000000000000f000000000000000, type: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 45c2ec69e7a51394da299b1488e5a7f0, type: 3}
