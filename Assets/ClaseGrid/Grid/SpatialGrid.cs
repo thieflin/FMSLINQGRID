@@ -60,6 +60,11 @@ public class SpatialGrid : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+       
+    }
+
     public void UpdateEntity(GridEntity entity)
     {
         var lastPos = lastPositions.ContainsKey(entity) ? lastPositions[entity] : Outside;
@@ -171,28 +176,29 @@ public class SpatialGrid : MonoBehaviour
     public bool activatedGrid;
     public bool showLogs = true;
 
-    private void Update()
-    {                                                                                                                                       //IA2-P1
-        foreach (var elem in buckets)                                                                                                       //IA2-P1
-        {                                                                                                                                   //IA2-P1
-            foreach (var ent in elem)                                                                                                       //IA2-P1
-            {                                                                                                                               //IA2-P1
-                foreach (var n in elem.Where(x => x != ent))                                                                                //IA2-P1
-                {                                                                                                                           //IA2-P1
-                    ent.myPos = GetPositionInGrid(ent.transform.position);                                                                  //IA2-P1
-                                                                                                                                            //IA2-P1
-                    n.myPos = GetPositionInGrid(n.transform.position);                                                                      //IA2-P1
-                                                                                                                                            //IA2-P1
-                    if (!ent.entityInSameCell.Contains(n) && ent.myPos.Item1 == n.myPos.Item1 && ent.myPos.Item2 == n.myPos.Item2)          //IA2-P1
-                    {                                                                                                                       //IA2-P1
-                        ent.entityInSameCell.Add(n);                                                                                        //IA2-P1
-                    }                                                                                                                       //IA2-P1
-                }                                                                                                                           //IA2-P1
-            }                                                                                                                               //IA2-P1
-        }                                                                                                                                   //IA2-P1
+    //private void Update()
+    //{                                                                                                                                       //IA2-P1
+    //    foreach (var elem in buckets)                                                                                                       //IA2-P1
+    //    {                                                                                                                                   //IA2-P1
+    //        foreach (var ent in elem)                                                                                                       //IA2-P1
+    //        {                                                                                                                               //IA2-P1
+    //            foreach (var n in elem.Where(x => x != ent))                                                                                //IA2-P1
+    //            {                                                                                                                           //IA2-P1
+    //                ent.myPos = GetPositionInGrid(ent.transform.position);                                                                  //IA2-P1
+    //                                                                                                                                        //IA2-P1
+    //                n.myPos = GetPositionInGrid(n.transform.position);                                                                      //IA2-P1
+    //                                                                                                                                        //IA2-P1
+    //                if (!ent.entityInSameCell.Contains(n) && ent.myPos.Item1 == n.myPos.Item1 && ent.myPos.Item2 == n.myPos.Item2)          //IA2-P1
+    //                {                                                                                                                       //IA2-P1
+    //                    ent.entityInSameCell.Add(n);                                                                                        //IA2-P1
+    //                }                                                                                                                       //IA2-P1
+    //            }                                                                                                                           //IA2-P1
+    //        }                                                                                                                               //IA2-P1
+    //    }                                                                                                                                   //IA2-P1
 
 
-    }
+    //}
+
     private void OnDrawGizmos()
     {
         var rows = Generate(z, curr => curr + cellHeight)

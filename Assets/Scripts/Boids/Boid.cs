@@ -39,6 +39,10 @@ public class Boid : MonoBehaviour
     public Material matEnemy;
     public Material matAlly;
     public int currentHp;
+    public SpatialGrid targetGrid;
+    public float radius;
+    public List<GridEntity> neighbours = new List<GridEntity>();
+    public IEnumerable<GridEntity> selected = new List<GridEntity>();
 
     public Renderer rend;
 
@@ -48,9 +52,9 @@ public class Boid : MonoBehaviour
         rend = GetComponent<Renderer>();
 
         //Aca defino a los que son traidores y los que no
-       
-        
+
     }
+
 
     void Start()
     {
@@ -76,7 +80,49 @@ public class Boid : MonoBehaviour
         transform.position += _velocity * Time.deltaTime;
         transform.forward = _velocity;
 
+        //CHEQUEO DE VECINOS
+
+        var myNeighbours = Query();                                                                                                                                       //IA2-P1
+                                                                                                                                                                          //IA2-P1
+                                                                                                                                                                          //IA2-P1                                                                                                                            //IA2-P1
+        foreach (var item in myNeighbours)                                                                                                                                //IA2-P1
+        {                                                                                                                                    
+            //CHEQUEO SI ESTAN EN LA MISMA POSICION EN LA GRILLA QUE YO
+            if (item.GetComponent<Boid>().targetGrid.GetPositionInGrid(item.transform.position).Item1 == targetGrid.GetPositionInGrid(transform.position).Item1 &&        //IA2-P1
+                 item.GetComponent<Boid>().targetGrid.GetPositionInGrid(item.transform.position).Item2 == targetGrid.GetPositionInGrid(transform.position).Item2)         //IA2-P1
+            {                                                                                                                                                             //IA2-P1
+                if (!neighbours.Contains(item))                                                                                                                           //IA2-P1
+                    neighbours.Add(item);                                                                                                                                 //IA2-P1
+            }                                                                                                                                                             //IA2-P1
+                                                                                                                                                                          //IA2-P1
+            if (neighbours.Contains(this.GetComponent<GridEntity>()))                                                                                                     //IA2-P1
+                neighbours.Remove(this.GetComponent<GridEntity>());                                                                                                       //IA2-P1
+
+
+
+            //CHEQUEO SI SIGO CERCA DE LOS QUE SON MIS VECINOS, SINO, LOS SACO
+            //if(neighbours.Count > 0)
+            //{
+            //    foreach (var item in neighbours)
+            //    {
+            //        if (!myNeighbours.Contains(item))
+            //        {
+            //            neighbours.Remove(item);
+            //        }
+            //    }
+            //}
+
+            //if (myNeighbours.Count() > 0)
+            //{
+            //    foreach (var neig in myNeighbours)
+            //    {
+            //        Debug.Log("SOY + " + gameObject.name + " Y TENGO DE VECINO A: " + neig.gameObject.name);
+            //    }
+            //}
+
+        }
     }
+
     public void CourseOfAction()
     {
         Vector3 desiredArrival = transform.position - foodTarget.transform.position;
@@ -211,25 +257,16 @@ public class Boid : MonoBehaviour
         Vector3 desired = new Vector3();
         int nearbyBoids = 0;
 
-        foreach (var boid in BoidManager.instance.allBoids)                                                                   
-        {                                                                                                                     
-            if (boid != this && Vector3.Distance(boid.transform.position, transform.position) < viewDistance)                 
-            {                                                                                                                 
-                GridEntity closeEntities = this.GetComponent<GridEntity>();                                                    //IA2-P2
-                GridEntity boidEntity = boid.GetComponent<GridEntity>();                                                       //IA2-P2
-                                                                                                                               //IA2-P2
-                if (!closeEntities.entityInSameCell.Contains(boidEntity))                                                      //IA2-P2
-                {                                                                                                              //IA2-P2
-                    return desired;                                                                                            //IA2-P2
-                }                                                                                                              //IA2-P2
-                else                                                                                                           //IA2-P2
-                {                                                                                                              //IA2-P2
-                    desired += boid._velocity;                                                                                 //IA2-P2
-                    nearbyBoids++;                                                                                             //IA2-P2
-                }                                                                                                              //IA2-P2
+        if (neighbours.Count() > 0)                                                                                                                               //IA2-P1       
+        {                                                                                                                                                         //IA2-P1       
+            foreach (var boid in neighbours.ToList())                                                                                                             //IA2-P1       
+            {                                                                                                                                                     //IA2-P1       
+                desired += boid.GetComponent<Boid>()._velocity;                                                                                                   //IA2-P1       
+                nearbyBoids++;                                                                                                                                    //IA2-P1       
+                                                                                                                                                                  //IA2-P1
+            }                                                                                                                                                     //IA2-P1
+        }                                                                                                                                                         //IA2-P1
 
-            }
-        }
 
         if (nearbyBoids == 0) return Vector3.zero;
         desired /= nearbyBoids;
@@ -286,6 +323,33 @@ public class Boid : MonoBehaviour
         if (transform.position.x > 5.2f) transform.position = new Vector3(-5.2f, transform.position.y, transform.position.z);
     }
 
+    #region Query
 
-    
+
+    public IEnumerable<GridEntity> Query()                                                                                                                                            //IA2-P1
+    {                                                                                                                                                                                 //IA2-P1
+        //BORRO EL IS BOX, TOTAL VOY A ESTAR USANDO SIEMPRE EL CIRCULAR                                                                                                               //IA2-P1
+        //creo una "caja" con las dimensiones deseadas, y luego filtro segun distancia para formar el círculo                                                                         //IA2-P1
+        return targetGrid.Query(                                                                                                                                                      //IA2-P1
+            transform.position + new Vector3(-radius, 0, -radius),                                                                                                                    //IA2-P1
+            transform.position + new Vector3(radius, 0, radius),                                                                                                                      //IA2-P1
+            x =>                                                                                                                                                                      //IA2-P1
+            {                                                                                                                                                                         //IA2-P1
+                var position2d = x - transform.position;                                                                                                                              //IA2-P1
+                position2d.y = 0;                                                                                                                                                     //IA2-P1
+                return position2d.sqrMagnitude < radius * radius;                                                                                                                     //IA2-P1
+            });                                                                                                                                                                       //IA2-P1
+                                                                                                                                                                                      //IA2-P1
+    }                                                                                                                                                                                 //IA2-P1
+                                                                                                                                                                                      //IA2-P1
+                                                                                                                                                                                      //IA2-P1
+    private void OnDrawGizmos()                                                                                                                                                       //IA2-P1
+    {                                                                                                                                                                                 //IA2-P1
+        Gizmos.matrix *= Matrix4x4.Scale(Vector3.forward + Vector3.right);                                                                                                            //IA2-P1
+        Gizmos.DrawWireSphere(transform.position, radius);                                                                                                                            //IA2-P1
+                                                                                                                                                                                      //IA2-P1
+                                                                                                                                                                                      //IA2-P1
+    }                                                                                                                                                                                 //IA2-P1
+    #endregion                                                                                                                                                                        //IA2-P1
+
 }

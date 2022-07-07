@@ -143,7 +143,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   velocity: {x: 0, y: 0, z: 0}
   onGrid: 0
-  entityInSameCell: []
 --- !u!23 &6405586 stripped
 MeshRenderer:
   m_CorrespondingSourceObject: {fileID: 3769878350340226570, guid: 45c2ec69e7a51394da299b1488e5a7f0,
@@ -237,6 +236,11 @@ PrefabInstance:
       objectReference: {fileID: 6405586}
     - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
         type: 3}
+      propertyPath: radius
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
+        type: 3}
       propertyPath: isEnemy
       value: 0
       objectReference: {fileID: 0}
@@ -270,6 +274,11 @@ PrefabInstance:
       propertyPath: futureTime
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
+        type: 3}
+      propertyPath: targetGrid
+      value: 
+      objectReference: {fileID: 1135109175}
     - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
         type: 3}
       propertyPath: hunterTarget
@@ -422,7 +431,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   velocity: {x: 0, y: 0, z: 0}
   onGrid: 0
-  entityInSameCell: []
 --- !u!1 &128957466 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3769878350340226566, guid: 45c2ec69e7a51394da299b1488e5a7f0,
@@ -443,7 +451,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   velocity: {x: 0, y: 0, z: 0}
   onGrid: 0
-  entityInSameCell: []
 --- !u!1 &153760408
 GameObject:
   m_ObjectHideFlags: 0
@@ -593,7 +600,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   velocity: {x: 0, y: 0, z: 0}
   onGrid: 0
-  entityInSameCell: []
 --- !u!1 &198998227 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3769878350340226566, guid: 45c2ec69e7a51394da299b1488e5a7f0,
@@ -614,7 +620,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   velocity: {x: 0, y: 0, z: 0}
   onGrid: 0
-  entityInSameCell: []
 --- !u!4 &216821704 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3769878350340226569, guid: 45c2ec69e7a51394da299b1488e5a7f0,
@@ -688,6 +693,11 @@ PrefabInstance:
       objectReference: {fileID: 6405586}
     - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
         type: 3}
+      propertyPath: radius
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
+        type: 3}
       propertyPath: isEnemy
       value: 0
       objectReference: {fileID: 0}
@@ -721,6 +731,11 @@ PrefabInstance:
       propertyPath: futureTime
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
+        type: 3}
+      propertyPath: targetGrid
+      value: 
+      objectReference: {fileID: 1135109175}
     - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
         type: 3}
       propertyPath: hunterTarget
@@ -883,6 +898,11 @@ PrefabInstance:
       objectReference: {fileID: 6405586}
     - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
         type: 3}
+      propertyPath: radius
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
+        type: 3}
       propertyPath: isEnemy
       value: 0
       objectReference: {fileID: 0}
@@ -916,6 +936,11 @@ PrefabInstance:
       propertyPath: futureTime
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
+        type: 3}
+      propertyPath: targetGrid
+      value: 
+      objectReference: {fileID: 1135109175}
     - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
         type: 3}
       propertyPath: hunterTarget
@@ -1072,6 +1097,11 @@ PrefabInstance:
       objectReference: {fileID: 6405586}
     - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
         type: 3}
+      propertyPath: radius
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
+        type: 3}
       propertyPath: isEnemy
       value: 0
       objectReference: {fileID: 0}
@@ -1105,6 +1135,11 @@ PrefabInstance:
       propertyPath: futureTime
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
+        type: 3}
+      propertyPath: targetGrid
+      value: 
+      objectReference: {fileID: 1135109175}
     - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
         type: 3}
       propertyPath: hunterTarget
@@ -1315,7 +1350,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   velocity: {x: 0, y: 0, z: 0}
   onGrid: 0
-  entityInSameCell: []
 --- !u!1001 &463628078
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1343,6 +1377,11 @@ PrefabInstance:
       propertyPath: rend
       value: 
       objectReference: {fileID: 6405586}
+    - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
+        type: 3}
+      propertyPath: radius
+      value: 0.75
+      objectReference: {fileID: 0}
     - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
         type: 3}
       propertyPath: isEnemy
@@ -1378,6 +1417,11 @@ PrefabInstance:
       propertyPath: futureTime
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
+        type: 3}
+      propertyPath: targetGrid
+      value: 
+      objectReference: {fileID: 1135109175}
     - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
         type: 3}
       propertyPath: hunterTarget
@@ -1536,7 +1580,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   velocity: {x: 0, y: 0, z: 0}
   onGrid: 0
-  entityInSameCell: []
 --- !u!1 &568361087 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3769878350340226566, guid: 45c2ec69e7a51394da299b1488e5a7f0,
@@ -1557,7 +1600,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   velocity: {x: 0, y: 0, z: 0}
   onGrid: 0
-  entityInSameCell: []
 --- !u!850595691 &570076235
 LightingSettings:
   m_ObjectHideFlags: 0
@@ -1658,13 +1700,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _myRen: {fileID: 0}
-  _velocity: {x: 0, y: 0, z: 0}
   waypointSpeed: 0
-  maxForce: 0
-  rightWay: 0
-  provisionaryWaypointTurnaround: 0
-  _desired: {x: 0, y: 0, z: 0}
-  killBoidDistance: 0
   target: {fileID: 0}
   chaseDistance: 5
   attackDistance: 0.3
@@ -2006,7 +2042,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   velocity: {x: 0, y: 0, z: 0}
   onGrid: 0
-  entityInSameCell: []
 --- !u!1 &793182849
 GameObject:
   m_ObjectHideFlags: 0
@@ -2085,7 +2120,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   velocity: {x: 0, y: 0, z: 0}
   onGrid: 0
-  entityInSameCell: []
 --- !u!1 &838223100
 GameObject:
   m_ObjectHideFlags: 0
@@ -2377,6 +2411,11 @@ PrefabInstance:
       objectReference: {fileID: 6405586}
     - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
         type: 3}
+      propertyPath: radius
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
+        type: 3}
       propertyPath: isEnemy
       value: 0
       objectReference: {fileID: 0}
@@ -2410,6 +2449,11 @@ PrefabInstance:
       propertyPath: futureTime
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
+        type: 3}
+      propertyPath: targetGrid
+      value: 
+      objectReference: {fileID: 1135109175}
     - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
         type: 3}
       propertyPath: hunterTarget
@@ -2562,7 +2606,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   velocity: {x: 0, y: 0, z: 0}
   onGrid: 0
-  entityInSameCell: []
 --- !u!4 &1075849170 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3769878350340226569, guid: 45c2ec69e7a51394da299b1488e5a7f0,
@@ -2598,6 +2641,11 @@ PrefabInstance:
       objectReference: {fileID: 6405586}
     - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
         type: 3}
+      propertyPath: radius
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
+        type: 3}
       propertyPath: isEnemy
       value: 0
       objectReference: {fileID: 0}
@@ -2631,6 +2679,11 @@ PrefabInstance:
       propertyPath: futureTime
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
+        type: 3}
+      propertyPath: targetGrid
+      value: 
+      objectReference: {fileID: 1135109175}
     - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
         type: 3}
       propertyPath: hunterTarget
@@ -2855,6 +2908,11 @@ PrefabInstance:
       objectReference: {fileID: 6405586}
     - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
         type: 3}
+      propertyPath: radius
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
+        type: 3}
       propertyPath: isEnemy
       value: 0
       objectReference: {fileID: 0}
@@ -2888,6 +2946,11 @@ PrefabInstance:
       propertyPath: futureTime
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
+        type: 3}
+      propertyPath: targetGrid
+      value: 
+      objectReference: {fileID: 1135109175}
     - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
         type: 3}
       propertyPath: hunterTarget
@@ -3061,6 +3124,11 @@ PrefabInstance:
       objectReference: {fileID: 6405586}
     - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
         type: 3}
+      propertyPath: radius
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
+        type: 3}
       propertyPath: isEnemy
       value: 0
       objectReference: {fileID: 0}
@@ -3094,6 +3162,11 @@ PrefabInstance:
       propertyPath: futureTime
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
+        type: 3}
+      propertyPath: targetGrid
+      value: 
+      objectReference: {fileID: 1135109175}
     - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
         type: 3}
       propertyPath: hunterTarget
@@ -3255,6 +3328,11 @@ PrefabInstance:
       objectReference: {fileID: 6405586}
     - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
         type: 3}
+      propertyPath: radius
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
+        type: 3}
       propertyPath: isEnemy
       value: 0
       objectReference: {fileID: 0}
@@ -3293,6 +3371,11 @@ PrefabInstance:
       propertyPath: futureTime
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
+        type: 3}
+      propertyPath: targetGrid
+      value: 
+      objectReference: {fileID: 1135109175}
     - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
         type: 3}
       propertyPath: alignWeight
@@ -3462,7 +3545,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   velocity: {x: 0, y: 0, z: 0}
   onGrid: 0
-  entityInSameCell: []
 --- !u!1001 &1396728842
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3490,6 +3572,11 @@ PrefabInstance:
       propertyPath: rend
       value: 
       objectReference: {fileID: 6405586}
+    - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
+        type: 3}
+      propertyPath: radius
+      value: 0.75
+      objectReference: {fileID: 0}
     - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
         type: 3}
       propertyPath: isEnemy
@@ -3525,6 +3612,11 @@ PrefabInstance:
       propertyPath: futureTime
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
+        type: 3}
+      propertyPath: targetGrid
+      value: 
+      objectReference: {fileID: 1135109175}
     - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
         type: 3}
       propertyPath: hunterTarget
@@ -3681,6 +3773,11 @@ PrefabInstance:
       objectReference: {fileID: 6405586}
     - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
         type: 3}
+      propertyPath: radius
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
+        type: 3}
       propertyPath: isEnemy
       value: 0
       objectReference: {fileID: 0}
@@ -3714,6 +3811,11 @@ PrefabInstance:
       propertyPath: futureTime
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
+        type: 3}
+      propertyPath: targetGrid
+      value: 
+      objectReference: {fileID: 1135109175}
     - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
         type: 3}
       propertyPath: hunterTarget
@@ -4037,6 +4139,11 @@ PrefabInstance:
       objectReference: {fileID: 6405586}
     - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
         type: 3}
+      propertyPath: radius
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
+        type: 3}
       propertyPath: isEnemy
       value: 0
       objectReference: {fileID: 0}
@@ -4070,6 +4177,11 @@ PrefabInstance:
       propertyPath: futureTime
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
+        type: 3}
+      propertyPath: targetGrid
+      value: 
+      objectReference: {fileID: 1135109175}
     - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
         type: 3}
       propertyPath: hunterTarget
@@ -4375,7 +4487,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   velocity: {x: 0, y: 0, z: 0}
   onGrid: 0
-  entityInSameCell: []
 --- !u!1 &1819711972 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3769878350340226566, guid: 45c2ec69e7a51394da299b1488e5a7f0,
@@ -4396,7 +4507,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   velocity: {x: 0, y: 0, z: 0}
   onGrid: 0
-  entityInSameCell: []
 --- !u!4 &1822029062 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3769878350340226569, guid: 45c2ec69e7a51394da299b1488e5a7f0,
@@ -4423,7 +4533,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   velocity: {x: 0, y: 0, z: 0}
   onGrid: 0
-  entityInSameCell: []
 --- !u!1001 &1827789710
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4446,6 +4555,11 @@ PrefabInstance:
       propertyPath: rend
       value: 
       objectReference: {fileID: 6405586}
+    - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
+        type: 3}
+      propertyPath: radius
+      value: 0.75
+      objectReference: {fileID: 0}
     - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
         type: 3}
       propertyPath: isEnemy
@@ -4481,6 +4595,11 @@ PrefabInstance:
       propertyPath: futureTime
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
+        type: 3}
+      propertyPath: targetGrid
+      value: 
+      objectReference: {fileID: 1135109175}
     - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
         type: 3}
       propertyPath: hunterTarget
@@ -4633,7 +4752,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   velocity: {x: 0, y: 0, z: 0}
   onGrid: 0
-  entityInSameCell: []
 --- !u!1001 &2064929155
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4656,6 +4774,11 @@ PrefabInstance:
       propertyPath: rend
       value: 
       objectReference: {fileID: 6405586}
+    - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
+        type: 3}
+      propertyPath: radius
+      value: 0.75
+      objectReference: {fileID: 0}
     - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
         type: 3}
       propertyPath: isEnemy
@@ -4691,6 +4814,11 @@ PrefabInstance:
       propertyPath: futureTime
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
+        type: 3}
+      propertyPath: targetGrid
+      value: 
+      objectReference: {fileID: 1135109175}
     - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
         type: 3}
       propertyPath: hunterTarget
@@ -4905,6 +5033,11 @@ PrefabInstance:
       objectReference: {fileID: 6405586}
     - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
         type: 3}
+      propertyPath: radius
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
+        type: 3}
       propertyPath: isEnemy
       value: 0
       objectReference: {fileID: 0}
@@ -4938,6 +5071,11 @@ PrefabInstance:
       propertyPath: futureTime
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
+        type: 3}
+      propertyPath: targetGrid
+      value: 
+      objectReference: {fileID: 1135109175}
     - target: {fileID: 3769878350340226568, guid: 45c2ec69e7a51394da299b1488e5a7f0,
         type: 3}
       propertyPath: hunterTarget
