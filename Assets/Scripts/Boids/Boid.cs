@@ -82,45 +82,13 @@ public class Boid : MonoBehaviour
 
         //CHEQUEO DE VECINOS
 
-        var myNeighbours = Query();                                                                                                                                       //IA2-P1
-                                                                                                                                                                          //IA2-P1
-                                                                                                                                                                          //IA2-P1                                                                                                                            //IA2-P1
-        foreach (var item in myNeighbours)                                                                                                                                //IA2-P1
-        {                                                                                                                                    
-            //CHEQUEO SI ESTAN EN LA MISMA POSICION EN LA GRILLA QUE YO
-            if (item.GetComponent<Boid>().targetGrid.GetPositionInGrid(item.transform.position).Item1 == targetGrid.GetPositionInGrid(transform.position).Item1 &&        //IA2-P1
-                 item.GetComponent<Boid>().targetGrid.GetPositionInGrid(item.transform.position).Item2 == targetGrid.GetPositionInGrid(transform.position).Item2)         //IA2-P1
-            {                                                                                                                                                             //IA2-P1
-                if (!neighbours.Contains(item))                                                                                                                           //IA2-P1
-                    neighbours.Add(item);                                                                                                                                 //IA2-P1
-            }                                                                                                                                                             //IA2-P1
-                                                                                                                                                                          //IA2-P1
-            if (neighbours.Contains(this.GetComponent<GridEntity>()))                                                                                                     //IA2-P1
-                neighbours.Remove(this.GetComponent<GridEntity>());                                                                                                       //IA2-P1
-
-
-
-            //CHEQUEO SI SIGO CERCA DE LOS QUE SON MIS VECINOS, SINO, LOS SACO
-            //if(neighbours.Count > 0)
-            //{
-            //    foreach (var item in neighbours)
-            //    {
-            //        if (!myNeighbours.Contains(item))
-            //        {
-            //            neighbours.Remove(item);
-            //        }
-            //    }
-            //}
-
-            //if (myNeighbours.Count() > 0)
-            //{
-            //    foreach (var neig in myNeighbours)
-            //    {
-            //        Debug.Log("SOY + " + gameObject.name + " Y TENGO DE VECINO A: " + neig.gameObject.name);
-            //    }
-            //}
-
-        }
+        var myNeighbours = Query();                                                                                                //IA2-P1                                       
+                                                                                                                                   //IA2-P1
+        neighbours = myNeighbours.ToList();                                                                                        //IA2-P1
+                                                                                                                                   //IA2-P1
+        if (neighbours.Contains(this.GetComponent<GridEntity>()))                                                                  //IA2-P1
+            neighbours.Remove(this.GetComponent<GridEntity>());                                                                    //IA2-P1
+                                                                                                                                   //IA2-P1
     }
 
     public void CourseOfAction()
